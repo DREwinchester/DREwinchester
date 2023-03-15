@@ -1,0 +1,26 @@
+<a onclick="getCoordinates()" class="mb-2 tm-btn tm-btn-primary nav__icon" style="background-color: darkred; color: white; padding: 40px; width: 100%;">
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  Emergency</a><br>
+            <div class="alert alert-success" style="display:none;" id="display">
+            <br><br><br>
+                <textarea id="latitude" name="latitude" ></textarea>
+                    <textarea id="longitude" name="longitude" ></textarea>
+                    </div>
+<script type="text/javascript">
+var latitude;
+var longitude;
+
+function getCoordinates(){
+document.getElementById('display').style.display = 'block';
+if(navigator.geolocation) {
+navigator.geolocation.getCurrentPosition(function(a) {
+latitude = a.coords.latitude;
+longitude = a.coords.longitude;
+
+document.getElementById('latitude').innerHTML = latitude;
+document.getElementById('longitude').innerHTML = longitude;
+});
+}else{
+alert('Geolocation not supported.');
+}
+}
+</script>
